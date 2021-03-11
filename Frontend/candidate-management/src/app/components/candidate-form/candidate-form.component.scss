@@ -1,0 +1,62 @@
+.form-container{
+    background: #f1f1f1;
+    box-shadow: 1px 1px 3px black;
+    font-weight: bold;
+    width: 90%;
+    padding: 10px;
+    margin: 8em auto;
+}
+
+mat-card-title{
+    margin: 1em;
+}
+
+mat-label{
+    font-size: 1rem;
+}
+
+mat-card{
+    padding: 1em 1em;
+}
+
+mat-card-content{
+    display: flex;
+    flex-direction: column;
+}
+
+mat-form-field{
+    flex: 1;
+    margin-left: 0.4em;
+    margin-right: 0.4em;
+}
+
+
+.form-row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.grad-small-field{
+    flex: 0.5;
+}
+
+.grad-long-field{
+    flex: 2;
+}
+
+.footer-buttons{
+    display: flex;
+    justify-content:flex-end;
+    margin-bottom: 1em;
+}
+
+.action-button{
+    width: 10em;
+    margin-right: 2em;
+}
+
+//snack-bar-css-config-class
+::ng-deep .snack-bar-color{
+    background: rgb(61, 60, 60);
+    color: #f58ab5;
+}

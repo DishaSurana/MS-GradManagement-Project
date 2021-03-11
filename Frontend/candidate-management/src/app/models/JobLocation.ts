@@ -1,0 +1,7 @@
+export enum JobLocation {
+    MUMBAI = 'MUMBAI',
+    BANGALORE = 'BANGALORE',
+    GURUGRAM = 'GURUGRAM',
+    HYDERABAD = 'HYDERABAD',
+    CHENNAI = 'CHENNAI'
+}

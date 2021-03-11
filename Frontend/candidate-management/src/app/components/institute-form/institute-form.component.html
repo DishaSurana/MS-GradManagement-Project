@@ -1,0 +1,24 @@
+<div class="form-container">
+    <form [formGroup]="instituteForm" role="form" name='institutePost'>
+        <mat-card class="mat-elevation-z6">
+            <mat-card-header>
+                <mat-card-title>{{mode}} Institute <span class="instituteId">id: {{id}}</span></mat-card-title>
+            </mat-card-header>
+            <hr>
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>Institute Name</mat-label>
+                    <input matInput formControlName="name" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Institute Address</mat-label>
+                    <textarea matInput formControlName="address" rows="2" required></textarea>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-footer class="footer-buttons">
+                <button mat-raised-button color="accent" (click)="onCancel()">Cancel</button>
+                <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+            </mat-card-footer>
+        </mat-card>
+    </form>
+</div>

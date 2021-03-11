@@ -1,0 +1,59 @@
+<h2>Grad/Candidate List</h2>
+<div>
+    <mat-form-field class="filterWrapper">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+    <span>
+        <button class="add-grad-button" mat-raised-button color="primary" [routerLink]="['form','']">
+            Add Candidate
+        </button>
+    </span>
+    <mat-form-field class="institute-filter" appearance="fill">
+        <mat-label>Institute</mat-label>
+        <mat-select [(ngModel)]="instituteFilterValue" (selectionChange)="filterGradsByInstitute()" required>
+            <mat-option value="all" selected>All</mat-option>
+            <mat-option *ngFor="let institute of institutes" [value]="institute.id">
+                {{institute.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<table mat-table [dataSource]="grads" class="mat-elevation-z8">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+        <th mat-header-cell *matHeaderCellDef> {{column | uppercase}} </th>
+        <td mat-cell *matCellDef="let element">
+            {{(column === "joiningDate") ? (element[column] | date: 'dd/MM/yyyy')
+            : (column === "institute") ? (element[column]).name
+            : column === 'skillSet'? (extractSkills(element[column]))
+            :element[column]
+            }}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deleteButton">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element" class="action-button">
+            <button mat-mini-fab color="warn" aria-label="delete icon" (click)="deleteGrad(element['grad_id'])">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="editButton">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element" class="action-button">
+            <button mat-mini-fab color="accent" aria-label="edit icon" [routerLink]="['form',element['grad_id']]">
+                <mat-icon>mode_edit</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay.concat(['deleteButton']).concat(['editButton'])"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay.concat(['deleteButton']).concat(['editButton'])"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+</table>

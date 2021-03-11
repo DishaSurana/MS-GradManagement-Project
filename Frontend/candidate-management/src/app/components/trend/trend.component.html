@@ -1,0 +1,38 @@
+<h2>Candidate Trends: {{chartType | uppercase}} </h2>
+<div class="chart-type">
+    <mat-form-field appearance="fill">
+        <mat-select [(ngModel)]="chartType" placeholder="Chart Type" (selectionChange)="renderCharts()">
+            <mat-option value="pie">Pie</mat-option>
+            <mat-option value="bar">Bar</mat-option>
+            <mat-option value="line">Line</mat-option>
+            <mat-option value="doughnut">Doughnut</mat-option>
+            <mat-option value="radar">Radar</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div class="trend-container">
+    <div class="trend-chart">
+        <h3>Location Trend</h3>
+        <div class="trend-canvas">
+            <canvas id="locationCanvas">{{locationChart}}</canvas>
+        </div>
+    </div>
+    <div class="trend-chart">
+        <h3>Degree Trend</h3>
+        <div class="trend-canvas">
+            <canvas id="degreeCanvas">{{degreeChart}}</canvas>
+        </div>
+    </div>
+    <div class="trend-chart">
+        <h3>Institute Trend</h3>
+        <div class="trend-canvas">
+            <canvas id="instituteCanvas">{{instituteChart}}</canvas>
+        </div>
+    </div>
+    <div class="trend-chart">
+        <h3>Skill Trend</h3>
+        <div class="trend-canvas">
+            <canvas id="skillCanvas">{{skillChart}}</canvas>
+        </div>
+    </div>
+</div>

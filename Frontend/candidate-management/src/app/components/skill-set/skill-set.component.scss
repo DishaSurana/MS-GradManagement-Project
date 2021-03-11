@@ -1,0 +1,48 @@
+h2{
+    text-align: center;
+    margin-top: 3em; 
+    font-size: 2rem;
+}
+
+section {
+    display: table;
+    margin: 0 auto;
+    padding-bottom: 3em;
+}
+
+.skill-row{
+    display: flex;
+    margin: 1em 1em;
+}
+
+.skill-content{
+    display: table-cell;
+    font-size: 1rem;
+    text-align: center;
+    min-width: 140px;
+    padding: 1em 0;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    width: 120px;
+}
+
+.skill-header{
+    display: table-cell;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    min-width: 140px;
+}
+
+.add-skill{
+    margin-left: 70%;
+}
+
+//snack-bar-css-config-class
+::ng-deep .snack-bar-color{
+    background: rgb(61, 60, 60);
+    color: #f58ab5;
+}

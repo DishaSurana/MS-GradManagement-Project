@@ -1,0 +1,61 @@
+.navbar{
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+}
+
+span{
+    padding-right: 1rem;
+}
+
+span a{
+    color: white;
+}
+
+.userPhoto{
+    margin-top: 0.5rem;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+}
+
+.app-title{
+    padding: auto;
+}
+
+// .tab-links{
+//     flex:2;
+// }
+
+// .user-menu{
+//     flex:1;
+// }
+
+.matMenuText{
+    text-align: center; 
+    color: white;
+}
+
+.router-components{
+    margin-top: 4em;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem;
+    color: white;
+    background-color: rgba(	77, 75, 75, 0.9);
+    font-size: 14px;
+    font-weight: 200;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+

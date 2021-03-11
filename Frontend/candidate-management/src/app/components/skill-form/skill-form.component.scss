@@ -1,0 +1,34 @@
+.form-container{
+    background: #f1f1f1;
+    box-shadow: 1px 1px 3px black;
+    font-weight: bold;
+    width: max-content;
+    padding: 10px;
+    margin: 8em auto;
+}
+
+mat-label{
+    font-size: 1rem;
+}
+
+.footer-buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2em;
+}
+
+mat-card{
+    padding: 5em 5em;
+}
+
+.skillId{
+    margin-left: 3.5em;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+//snack-bar-css-config-class
+::ng-deep .snack-bar-color{
+    background: rgb(61, 60, 60);
+    color: #f58ab5;
+}

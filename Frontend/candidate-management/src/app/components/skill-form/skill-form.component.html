@@ -1,0 +1,20 @@
+<div class="form-container">
+    <form [formGroup]="skillForm" role="form" name='skillPost'>
+        <mat-card class="mat-elevation-z6">
+            <mat-card-header>
+                <mat-card-title>{{mode}} Skill <span class="skillId">id: {{id}}</span></mat-card-title>
+            </mat-card-header>
+            <hr>
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>Skill Name</mat-label>
+                    <input matInput formControlName="skillName" required>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-footer class="footer-buttons">
+                <button mat-raised-button color="accent" (click)="onCancel()">Cancel</button>
+                <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+            </mat-card-footer>
+        </mat-card>
+    </form>
+</div>

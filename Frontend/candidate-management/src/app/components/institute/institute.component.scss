@@ -1,0 +1,50 @@
+h2{
+    text-align: center;
+    margin-top: 3em;
+    font-size: 2rem;
+}
+
+section {
+    display: table;
+    width: 75em;
+    margin: 0 auto;
+    padding-bottom: 3em;
+}
+
+.institute-row{
+    display: flex;
+    margin: 1em 1em;
+}
+
+.institute-content{
+    display: table-cell;
+    font-size: 1rem;
+    text-align: center;
+    padding: 1em 0;
+    flex:1;
+}
+
+.button-container{
+    display: flex;
+    justify-content: space-around;
+    flex:1;
+}
+
+.institute-header{
+    display: table-cell;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1em 0;
+    flex:1;
+}
+
+.add-institute{
+    margin-left: 70%;
+}
+
+//snack-bar-css-config-class
+::ng-deep .snack-bar-color{
+    background: rgb(61, 60, 60);
+    color: #f58ab5;
+}

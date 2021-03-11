@@ -1,0 +1,26 @@
+h2{
+    text-align: center;
+    font-size: 2rem;
+    background: rgba(245, 243, 241, 0.7);
+    padding: 1em;
+}
+
+.imgItem{
+    margin: 2em 1em;
+}
+
+// .imgItem img{
+//     height: 40em;
+//     width: 40em;
+// }
+
+.img-background {
+    padding-top: 6em ;
+    padding-bottom: 40em;
+    /* Center and scale the image nicely */
+    background-image: url(../../../assets/Accolite.jpg);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -1,0 +1,27 @@
+<h2>Institutes</h2>
+<div>
+    <button class="add-institute" mat-raised-button color="primary" [routerLink]="['form','']">
+        Add Institute
+    </button>
+</div>
+<section>
+    <div class="institute-row">
+        <div class="institute-header">Institute ID</div>
+        <div class="institute-header">Institute Name</div>
+        <div class="institute-header">Institute Address</div>
+        <div class="institute-header"></div>
+    </div>
+    <div class="institute-row" *ngFor="let institute of institutes">
+        <div class="institute-content ">{{institute.id}}</div>
+        <div class="institute-content">{{institute.name}}</div>
+        <div class="institute-content">{{institute.address}}</div>
+        <div class="button-container">
+            <button mat-mini-fab color="warn" aria-label="delete icon" (click)="deleteInstitute(institute.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-mini-fab color="accent" aria-label="edit icon" [routerLink]="['form',institute.id]">
+                <mat-icon>mode_edit</mat-icon>
+            </button>
+        </div>
+    </div>
+</section>

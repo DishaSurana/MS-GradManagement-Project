@@ -1,0 +1,38 @@
+<div id="page-container">
+    <!-- header -->
+    <mat-toolbar color="primary" class="navbar" style="width: 100%;">
+        <!-- <div>
+            <span><img src="assets/accoliteLogo.png" class="userPhoto"></span>
+            <span class="app-title">Grad Management</span>
+        </div> -->
+        <div class="tab-links">
+            <span>Grad Management</span>
+            <span><a mat-raised-button routerLink="home">Home</a></span>
+            <span><a mat-raised-button routerLink="skill">Skill</a></span>
+            <span><a mat-raised-button routerLink="grad">Grad</a></span>
+            <span><a mat-raised-button routerLink="institute">Institute</a></span>
+            <span><a mat-raised-button routerLink="trend">Trend</a></span>
+        </div>
+        <div class="user-menu">
+            <span *ngIf="!isSignedIn()">
+                <button mat-raised-button (click)='signInWithGoogle()'>Sign In with google</button>
+            </span>
+            <span *ngIf="isSignedIn()">
+                <img [mat-menu-trigger-for]="userMenu" class="userPhoto" src="{{ user?.photoUrl }}">
+                <mat-menu #userMenu="matMenu">
+                    <div class="matMenuText"> {{ user?.name | uppercase }}</div>
+                    <button class="matMenuText" mat-menu-item (click)='signOut()'>Sign Out</button>
+                </mat-menu>
+            </span>
+        </div>
+    </mat-toolbar>
+
+    <div class="router-components">
+        <router-outlet></router-outlet>
+    </div>
+
+    <!-- footer -->
+    <footer layout-fill class="footer">
+        &copy; Copyright 2021 Disha Surana. All rights reserved.
+    </footer>
+</div>
