@@ -76,7 +76,8 @@ public class InstituteDaoImpl implements InstituteDao {
         Session session = sessionFactoryVar.openSession();
         Transaction tx = session.beginTransaction();
         Institute institute = session.get(Institute.class, id);
-        session.delete(institute);
+        if(institute != null)
+            session.delete(institute);
         tx.commit();
         session.close();
     }

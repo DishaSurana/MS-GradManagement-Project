@@ -8,10 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/candidate")
@@ -69,16 +67,18 @@ public class CandidateController {
         - Institute
     */
 
-//    @CrossOrigin("http://localhost:4200")
-//    @GetMapping("/location/{jobLocation}")
-//    public ResponseEntity<List> getCandidateByLocation(@PathVariable("jobLocation") String jobLocation){
-//        List locationGradList = this.candidateService.getAllCandidatesByLocation(jobLocation);
-//        return new ResponseEntity<>(locationGradList, HttpStatus.OK);
-//    }
+/*
+    @CrossOrigin("http://localhost:4200")
+    @GetMapping("/location/{jobLocation}")
+    public ResponseEntity<List> getCandidateByLocation(@PathVariable("jobLocation") String jobLocation){
+        List locationGradList = this.candidateService.getAllCandidatesByLocation(jobLocation);
+        return new ResponseEntity<>(locationGradList, HttpStatus.OK);
+    }
+*/
 
     @CrossOrigin("http://localhost:4200")
     @GetMapping("/institute/{id}")
-    public ResponseEntity<List> getCandidateByInstitute(@PathVariable("id") Long id){
+    public ResponseEntity<List> getCandidatesByInstitute(@PathVariable("id") Long id){
         List locationGradList = this.candidateService.getAllCandidatesByInstitute(id);
         return new ResponseEntity<>(locationGradList, HttpStatus.OK);
     }
@@ -87,6 +87,7 @@ public class CandidateController {
         Trend API's
     */
     @CrossOrigin("http://localhost:4200")
+    @Produces({"application/xml","application/json"})
     @GetMapping("/trend/{attribute}")
     public ResponseEntity<List> getCandidateTrend(@PathVariable("attribute") String attribute){
         List trendList = null;

@@ -34,11 +34,11 @@ public class CandidateDaoImpl implements CandidateDao {
                 checkCandidate.setIsDeleted(false);
             else
                 throw new Exception("Grad already present");
+            session.update(checkCandidate);
         }
         else {
-            checkCandidate = grad;
+            session.save(grad);
         }
-        session.save(checkCandidate);
         tx.commit();
         session.close();
     }
@@ -78,10 +78,11 @@ public class CandidateDaoImpl implements CandidateDao {
     public void deleteCandidateById(String grad_id) throws Exception{
         Session session = sessionFactoryVar.openSession();
         Candidate deleteGrad = this.getCandidateById(grad_id);
-        deleteGrad.setIsDeleted(true);
+        if(deleteGrad != null)
+            deleteGrad.setIsDeleted(true);
         Transaction tx = session.beginTransaction();
-        Candidate grad = (Candidate) session.get(Candidate.class,grad_id);
-        session.save(deleteGrad);
+        if(deleteGrad != null)
+            session.update(deleteGrad);
         tx.commit();
         session.close();
     }
@@ -95,7 +96,6 @@ public class CandidateDaoImpl implements CandidateDao {
                         .add(Projections.groupProperty(attribute))
                         .add(Projections.rowCount())
                 ).list();
-//        System.out.println(result);
         tx.commit();
         session.close();
         return result;

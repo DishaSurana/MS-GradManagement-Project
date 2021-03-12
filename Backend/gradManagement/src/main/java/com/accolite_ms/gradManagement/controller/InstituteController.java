@@ -1,7 +1,6 @@
 package com.accolite_ms.gradManagement.controller;
 
 import com.accolite_ms.gradManagement.model.Institute;
-import com.accolite_ms.gradManagement.model.Skill;
 import com.accolite_ms.gradManagement.service.InstituteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import java.util.List;
 

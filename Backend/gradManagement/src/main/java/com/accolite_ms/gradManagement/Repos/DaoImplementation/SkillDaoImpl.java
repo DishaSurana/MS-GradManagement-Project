@@ -75,7 +75,8 @@ public class SkillDaoImpl implements SkillDao {
         Session session = sessionFactoryVar.openSession();
         Transaction tx = session.beginTransaction();
         Skill skill = (Skill)session.get(Skill.class, id);
-        session.delete(skill);
+        if(skill != null)
+            session.delete(skill);
         tx.commit();
         session.close();
     }

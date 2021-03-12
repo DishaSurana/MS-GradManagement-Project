@@ -115,30 +115,34 @@ public class CandidateServiceImpl implements CandidateService {
 
     public List getTrendBySkill(){
 
-        List<Candidate> allCandidates = this.getAllCandidates();
+        List<List<Object>> result = null;
+        try {
+            List<Candidate> allCandidates = this.candidateDao.getAllCandidates();
 
-        Map<Skill, Long> skillCandidateMap = new HashMap<>();
-        for(Candidate candidate : allCandidates ){
-            for(Skill skill : candidate.getSkillSet())
-            {
-                if(skillCandidateMap.get(skill) == null)
-                    skillCandidateMap.put(skill, 1L);
-                else
-                    skillCandidateMap.put(skill, skillCandidateMap.get(skill)+1);
-            }
-        }
-
-        List<List<Object>> result = new ArrayList<>();
-        for (Map.Entry<Skill,Long> entry : skillCandidateMap.entrySet())
-        {
-            result.add(new ArrayList<Object>(){
-                {
-                    add(entry.getKey());
-                    add(entry.getValue());
+            Map<Skill, Long> skillCandidateMap = new HashMap<>();
+            Long count = 0L;
+            for (Candidate candidate : allCandidates)
+                for (Skill skill : candidate.getSkillSet()) {
+                    if (skillCandidateMap.get(skill) == null)
+                        count = 1L;
+                    else if(skillCandidateMap.get(skill) != null)
+                        count = skillCandidateMap.get(skill)+1;
+                    skillCandidateMap.put(skill, count);
                 }
-            });
+
+            result = new ArrayList<>();
+            for (Map.Entry<Skill, Long> entry : skillCandidateMap.entrySet()) {
+                result.add(new ArrayList<Object>() {{
+                        add(entry.getKey());
+                        add(entry.getValue());
+                    }});
+            }
+        } catch (Exception e){
+            LOGGER.error(e);
         }
-        return result;
+        finally {
+            return result;
+        }
     }
 
 }

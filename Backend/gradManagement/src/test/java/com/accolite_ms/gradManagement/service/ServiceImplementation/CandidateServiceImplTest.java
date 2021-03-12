@@ -31,6 +31,7 @@ public class CandidateServiceImplTest {
     Candidate grad, grad1;
     Institute institute;
     List<Candidate> candidateList;
+    Skill skill, skill1;
 
     @Before
     public void setUp() throws Exception {
@@ -40,12 +41,15 @@ public class CandidateServiceImplTest {
 
         //Skill list
         Set<Skill> skillList = new HashSet();
-        Skill skill = new Skill("Java");
+        skill = new Skill("Java");
         skill.setId(1L);
+
+        skill1 = new Skill();
+        skill1.setId(2L);
+        skill1.setSkillName("C++");
+
         skillList.add(skill);
-        skill.setId(2L);
-        skill.setSkillName("C++");
-        skillList.add(skill);
+        skillList.add(skill1);
 
         //Candidate Objects
         grad = new Candidate("INT101", "Aayat", "Ashok Vihar,Delhi",
@@ -247,75 +251,33 @@ public class CandidateServiceImplTest {
 
     }
 
-    @SuppressWarnings("unchecked")
     @Test
-    public void getTrendBySkillsTest() {
+    public void getTrendBySkillsTest() throws Exception{
 
-        Skill skill1 = new Skill("Java");
-        skill1.setId(1L);
-        Skill skill2 = new Skill("C++");
-        skill2.setId(2L);
-
-        Set<Skill> candidateSkills = mock(Set.class);
-        Iterator<Skill> skillIterator = mock(Iterator.class);
-
-        Mockito.when(skillIterator.hasNext()).thenReturn(true, true, false);
-        Mockito.when(skillIterator.next())
-                .thenReturn(skill1).thenReturn(skill2);
-        Mockito.when(candidateSkills.iterator()).thenReturn(skillIterator);
-
-        int iterations = 0;
-        for (Skill skill : candidateSkills) {
-            iterations++;
-        }
-        Assert.assertEquals(iterations,2); //2
-//        -------------------------------------------------------------
-
-
-        List<Candidate> allCandidates = mock(List.class);
-        Iterator<Candidate> candidateListIterator = mock(Iterator.class);
-
-        Mockito.when(candidateListIterator.hasNext()).thenReturn(true, true, false);
-        Mockito.when(candidateListIterator.next())
-                .thenReturn(candidateList.get(0))
-                .thenReturn(candidateList.get(1));
-        Mockito.when(allCandidates.iterator()).thenReturn(candidateListIterator);
-
-        iterations = 0; int innerIterations=0;
-        for (Candidate candidate : allCandidates) {
-            for (Skill skill : candidate.getSkillSet()) {
-                innerIterations++;
-            }
-            iterations++;
-        }
-        Assert.assertEquals(iterations,candidateList.size()); //2
-        Assert.assertEquals(innerIterations,4); //2*2=4
-//        -------------------------------------------------------------
-
-/*
-        List<List<Object>> result = mock(List.class);
-        Iterator<List<Object>> resultIterator = mock(Iterator.class);
-
-        Mockito.when(resultIterator.hasNext()).thenReturn(true, true, false);
-        Mockito.when(resultIterator.next())
-                .thenReturn(new ArrayList(){{
-                        add(skill1);
-                        add(2);
-                }}).thenReturn(new ArrayList(){{
-                        add(skill2);
-                        add(2);
+        ArrayList trendList = new ArrayList(){
+            {
+                add(new ArrayList(){{
+                    add(skill);
+                    add(2L);
                 }});
-        Mockito.when(result.iterator()).thenReturn(resultIterator);
+                add(new ArrayList(){{
+                    add(skill1);
+                    add(2L);
+                }});
+            }
+        };
+        // no exception- trend by skills
+        Mockito.when(candidateDao.getAllCandidates()).thenReturn(candidateList);
+        List trendSkill = candidateService.getTrendBySkill();
+        Assert.assertEquals(trendSkill, trendList);
 
-        iterations = 0;
-        for (List resultRow : result) {
-            iterations++;
-        }
-        Assert.assertEquals(iterations,2);
-*/
-
-
-        List trendList = candidateService.getTrendBySkill();
+        // exception- trend by skills = null
+        Mockito.when(candidateDao.getAllCandidates())
+                .thenThrow(new Exception())
+                .thenReturn(null);
+        trendSkill = candidateService.getTrendBySkill();
+        Assert.assertNull(trendSkill);
 
     }
+
 }
