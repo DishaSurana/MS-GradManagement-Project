@@ -21,6 +21,6 @@
 - [Frontend](https://github.com/DishaSurana/MS-GradManagement-Project/tree/master/Frontend/candidate-management)
 
 ## Screenshots
-[Grad Management Screenshots](GradManagement_ScreenShots.docx)
+[Grad Management Screenshots](GradManagement_ScreenShots.pdf)
 
 
