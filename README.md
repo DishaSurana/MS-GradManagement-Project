@@ -17,8 +17,8 @@
 - MySql
 
 ## Source Code
-- [Backend](https://github.com/DishaSurana/MS-GradManagement-Project/tree/master/Backend/gradManagement)
-- [Frontend](https://github.com/DishaSurana/MS-GradManagement-Project/tree/master/Frontend/candidate-management)
+- [Backend](https://github.com/DishaSurana/MS-GradManagement-Project/tree/master/Backend/gradManagement/src)
+- [Frontend](https://github.com/DishaSurana/MS-GradManagement-Project/tree/master/Frontend/candidate-management/src)
 
 ## Screenshots
 [Grad Management Screenshots](GradManagement_ScreenShots.pdf)
